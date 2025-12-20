@@ -1,0 +1,79 @@
+@use "../abstracts" as *;
+
+.formPage {
+  flex-direction: column;
+  background: url("../../../assets/images/recent-urls-background-desktop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .loginCont {
+    @include flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 28rem;
+    padding: 2.5rem 1rem 3rem 1rem;
+
+    .formHead {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .formCont {
+      label {
+        font-weight: 600;
+      }
+
+      input {
+        border: 2px solid $color-text-4;
+        outline: none;
+        padding: 1rem;
+        border-radius: 0.25rem;
+      }
+
+      button {
+        width: 100%;
+        background-color: $color-brown-1;
+        color: $color-white;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        white-space: nowrap;
+        text-align: center;
+        padding: 1rem 2.5rem 0.75rem 2.5rem;
+        font-weight: 700;
+      }
+
+      .error {
+        color: $color-red;
+        font-size: 0.8rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .footLink {
+    color: $color-brown-2;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @media screen and (max-width: $breakpoints-md) {
+    & {
+      background: url("../../../assets/images/recent-urls-background-mobile.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      .loginCont {
+        padding: 2rem 1rem 2.5rem 1rem;
+
+        .formHead {
+          h1 {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}

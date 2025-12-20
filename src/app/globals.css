@@ -1,0 +1,24 @@
+/* @import "../styles/css/normalize.css"; */
+@import "tailwindcss";
+
+:root {
+  --primaryBg: #fffcfa;
+  --bgImageColors: #d6c1b1;
+  --btnColor: #775942;
+  --greyTextColor: #7a7a7a;
+  --lightGreyTextColor: #b5b5b5;
+  --blackTextColor: #3b3b3b;
+  --lightBlackTextColor: #2b2b2b;
+  --modalBg: #9f9f9fbb;
+  --linksColor: #ad8769;
+  --linksColorHover: #5f4836;
+}
+
+@utility container {
+  margin-inline: auto;
+}
+
+a {
+  text-decoration: underline;
+}
+

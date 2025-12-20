@@ -1,0 +1,150 @@
+@use "../abstracts" as *;
+
+.header {
+  padding: 20px 0px;
+
+  .logoContainer {
+    width: 120px;
+  }
+
+  .hamburger {
+    display: none;
+    z-index: 100;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+
+    .line {
+      transition: all 0.3s ease-in-out;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      width: 28px;
+      height: 3px;
+      background: $color-black;
+      margin: 6px auto;
+    }
+  }
+
+  .logout {
+    background-color: $color-brown-2;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: $color-white;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-brown-3;
+    }
+  }
+
+  .navigation-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    a {
+      text-decoration: none;
+      button {
+        background-color: $color-brown-2;
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        padding: 15px 30px;
+        border-radius: 10px;
+        color: $color-white;
+        font-size: 18px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-brown-3;
+        }
+
+        &.login {
+          background: none;
+          color: black;
+          font-weight: 600;
+
+          &:hover {
+            background-color: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $breakpoints-md) {
+    & {
+      padding: 25px 0px;
+    }
+
+    .logoContainer {
+      width: 95px;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .navigation-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--primaryBg);
+      z-index: 4;
+      transition: all 0.5s ease;
+      right: -100%;
+    }
+
+    .navigation-menu.expanded {
+      right: 0;
+    }
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+
+    .hamburger.active {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+    }
+
+    .hamburger.active .line:first-child {
+      -webkit-transform: translateY(5px);
+      -moz-transform: translateY(5px);
+      transform: translateY(5px);
+    }
+
+    .hamburger.active .line:nth-child(2) {
+      width: 0;
+    }
+
+    .hamburger.active .line:nth-child(3) {
+      -webkit-transform: translateY(-13px) rotate(90deg);
+      -moz-transform: translateY(-13px) rotate(90deg);
+      transform: translateY(-13px) rotate(90deg);
+    }
+  }
+}

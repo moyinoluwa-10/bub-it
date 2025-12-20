@@ -1,0 +1,33 @@
+@use "../abstracts" as *;
+
+.footer {
+  background-color: $color-pink-2;
+  background: linear-gradient(142.99deg, #f5f5f3 21.49%, #faf3ec 91.63%);
+
+  p {
+    a {
+      color: $color-brown-1;
+      transition: all 0.25s ease-in-out;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .socials {
+    a {
+      .icons {
+        font-size: 25px;
+        color: $color-text-6;
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+          color: $color-text-2;
+          transform: translateY(-5px);
+        }
+      }
+    }
+  }
+}
