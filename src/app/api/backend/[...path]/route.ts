@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   req: NextRequest,
-  ctx: { params: { path: string[] } }
+  ctx: { params: Promise<{ path: string[] }> }
 ) {
   try {
     const params = await ctx.params;
@@ -34,7 +34,7 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  ctx: { params: { path: string[] } }
+  ctx: { params: Promise<{ path: string[] }> }
 ) {
   try {
     const params = await ctx.params;
@@ -66,7 +66,7 @@ export async function POST(
 
 export async function PATCH(
   req: NextRequest,
-  ctx: { params: { path: string[] } }
+  ctx: { params: Promise<{ path: string[] }> }
 ) {
   try {
     const params = await ctx.params;
@@ -100,7 +100,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  ctx: { params: { path: string[] } }
+  ctx: { params: Promise<{ path: string[] }> }
 ) {
   try {
     const params = await ctx.params;
