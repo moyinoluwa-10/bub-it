@@ -17,14 +17,15 @@ export default function Header({ showNav }: { showNav?: boolean }) {
   const { status } = useSession();
 
   const handleLogout = async () => {
-    await fetch("/api/auth/signout", {
+    await fetch("/api/auth/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({}),
     });
-    await signOut({ redirect: false });
-    router.push("/");
+    await signOut({ redirect: true, callbackUrl: "/" });
+    // router.push("/");
   };
 
   return (
