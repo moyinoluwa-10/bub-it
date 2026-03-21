@@ -6,7 +6,24 @@ import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 
 export default function Provider({ children }: { children: React.ReactNode }) {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: (failureCount, error) => {
+          const status = (error as any)?.status;
+          if (status === 401) return false;
+          return failureCount < 3;
+        },
+      },
+      mutations: {
+        retry: (failureCount, error) => {
+          const status = (error as any)?.status;
+          if (status === 401) return false;
+          return failureCount < 3;
+        },
+      },
+    },
+  });
 
   return (
     <SessionProvider>

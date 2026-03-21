@@ -16,6 +16,7 @@
 
 @utility container {
   margin-inline: auto;
+  @apply xl:max-w-7xl;
 }
 
 a {

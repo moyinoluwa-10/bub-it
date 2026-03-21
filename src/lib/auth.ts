@@ -2,8 +2,22 @@
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+const MAX_AGE: number = Number(
+  process.env.NEXT_PUBLIC_MAX_AGE ?? 7 * 24 * 60 * 60 * 1000, // 7 days
+);
+const UPDATE_AGE: number = Number(
+  process.env.NEXT_PUBLIC_UPDATE_AGE ?? 1 * 24 * 60 * 60 * 1000, // 1 day
+);
+
 export const authOptions: AuthOptions = {
-  session: { strategy: "jwt" },
+  session: {
+    strategy: "jwt",
+    maxAge: MAX_AGE,
+    updateAge: UPDATE_AGE,
+  },
+  jwt: {
+    maxAge: MAX_AGE,
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -20,7 +34,7 @@ export const authOptions: AuthOptions = {
             headers: { accept: "application/json", cookie },
             cache: "no-store",
             credentials: "include",
-          }
+          },
         );
         if (!res.ok) return null;
         const data = (await res.json()).data;

@@ -55,6 +55,12 @@ export async function apiFetch(input: RequestInfo, init?: RequestInit) {
   }
 
   if (!res.ok) {
+    if (res.status === 401) {
+      await fetch("/api/auth/logout", { method: "POST" });
+      await signOut({ redirect: false });
+      toast.error("Session expired. Please log in again.");
+      setTimeout(() => redirect("/auth/sign-in"), 300);
+    }
     throw new HttpError(res.status, getMessage(data) ?? res.statusText, data);
   }
 
